@@ -22,10 +22,65 @@ Compilateur     : Mingw-w64 g++ 11.2.0
 */
 
 #include <cstdlib>
+#include <random>
+#include <ctime>
 #include <iostream>
+
 using namespace std;
 
+
+char monChar(){
+
+   int premierLettre = int('a');
+
+
+
+   int aleatoir = rand() % 26;
+
+   return char(premierLettre + aleatoir);
+}
 int main() {
-   // commentaire
- return EXIT_SUCCESS;
+
+   srand(time(NULL));
+
+   const int B_INF =  1,
+      B_SUP = 10;
+
+   int compteur = 0;
+
+   cout << "Bonjour ce programme permet de tester votre habillete :" << endl;
+   cout << "Combien de lancee [" << B_INF << " - " << B_SUP << "] :";
+   int entree;
+   cin >> entree;
+
+   char saisie;
+   clock_t temps;
+   temps = clock();
+
+   for(int i = 0; i < entree; ++i){
+
+
+      char c = monChar();
+
+      cout << c << " :";
+
+      cin >> saisie;
+
+      if(saisie == c){
+         ++compteur;
+      }
+   }
+
+   temps = clock() - temps;
+   cout << endl;
+   cout << "Nombre de reponse correcte :" << compteur << endl;
+   double tempMis = round(temps / CLOCKS_PER_SEC);
+
+   cout << tempMis << endl;
+   cout << "Temps ecoule : " << round(temps / CLOCKS_PER_SEC) << " seconde" << endl;
+   cout << "==> " << (int)tempMis / entree << " seconde par lettre."
+        << endl;
+
+
+   return EXIT_SUCCESS;
 }
