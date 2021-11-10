@@ -26,6 +26,6 @@ Compilateur     : Mingw-w64 g++ 11.2.0
 using namespace std;
 
 int main() {
-
+   // commentaire
  return EXIT_SUCCESS;
 }
