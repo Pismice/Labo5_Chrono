@@ -1,6 +1,6 @@
 /*
 -----------------------------------------------------------------------------------
-Nom du fichier  : main.cpp (xxx = h ou cpp)
+Nom du fichier  : main.cpp
 Auteur(s)       : Jérémie Santoro, Didier Lokokpe
 Date creation   : 10.11.2021
 
@@ -20,65 +20,82 @@ Remarque(s)     : - Les saisies utilisteur sont contrôlées
 Compilateur     : Mingw-w64 g++ 11.2.0
 -----------------------------------------------------------------------------------
 */
-
-#include <cstdlib>
-#include <random>
-#include <ctime>
-#include <iostream>
+#include <cstdlib>         // Librairie qui permet d'utiliser EXIT_SUCCESS
+#include <ctime>           // Librairie qui permet l'utilisation d'un timer
+#include <iostream>        // Librairie qui permet d'utiliser les cin et cout
+#include "GenererChar.h"   // Librairie qui permet de générer des char aléatoires
+#include <limits>          // Librairie qui permet d'utiliser numeric_limits pour
+                           // vider le buffer
 
 using namespace std;
 
-
-char monChar(){
-
-   int premierLettre = int('a');
-
-
-
-   int aleatoir = rand() % 26;
-
-   return char(premierLettre + aleatoir);
-}
 int main() {
+   // Choix des intervalles pour le nombre de lancées
+   const int B_INF =  1,
+             B_SUP = 10;
 
+   // Explication du programme à l'utilisateur
+   cout << "Bonjour ce programme permet de tester "
+           "votre habilté au clavier :" << endl;
+   cout << "Combien de lancees [" << B_INF << " - " << B_SUP << "] :";
+
+   // Saisie du nombre lancées
+   int nbreLancees;
+   bool erreurEntreeLancees;
+   do
+   {
+      cin >> nbreLancees;
+
+      if(!cin.good() || nbreLancees < B_INF || nbreLancees > B_SUP)
+      {
+         erreurEntreeLancees = true;
+         cin.clear();
+      }
+
+      cin.ignore(numeric_limits<streamsize>::max(), '\n');
+   }while(erreurEntreeLancees);
+
+   // Génération du seed random
    srand(time(NULL));
 
-   const int B_INF =  1,
-      B_SUP = 10;
+   int nbreReponsesCorrectes = 0;   // Score de l'utilisateur
+   char userCharacter;              // Caractère rentré par l'utilisateur
 
-   int compteur = 0;
-
-   cout << "Bonjour ce programme permet de tester votre habillete :" << endl;
-   cout << "Combien de lancee [" << B_INF << " - " << B_SUP << "] :";
-   int entree;
-   cin >> entree;
-
-   char saisie;
+   // TODO: DIDIER ?
    clock_t temps;
    temps = clock();
 
-   for(int i = 0; i < entree; ++i){
+   // Variables nécessaires pour la boucle
+   char randomCharacter;
+   char BEGIN  = 'a';
+   char END    = 'z';
 
+   // Boucle le nombre de fois désirés par l'utilisateur
+   for(int i = 0; i < nbreLancees; ++i){
+      randomCharacter = genererCharactereAleatoire(BEGIN,END);
 
-      char c = monChar();
+      cout << randomCharacter << " :";
 
-      cout << c << " :";
+      cin >> userCharacter;
 
-      cin >> saisie;
-
-      if(saisie == c){
-         ++compteur;
+      if(userCharacter == randomCharacter){
+         ++nbreReponsesCorrectes;
       }
    }
 
+   // TODO : DIDIER ?
    temps = clock() - temps;
-   cout << endl;
-   cout << "Nombre de reponse correcte :" << compteur << endl;
-   double tempMis = round(temps / CLOCKS_PER_SEC);
 
+   // Affichage du score de l'utilisateur
+   cout << endl;
+   cout << "Nombre de reponse correcte :" << nbreReponsesCorrectes << endl;
+   int tempMis = (temps / CLOCKS_PER_SEC);
+
+   // Affichage du temps qui s'est écoulé et le temps moyen mis
+   // par l'utilisateur entre chaque lettre
    cout << tempMis << endl;
-   cout << "Temps ecoule : " << round(temps / CLOCKS_PER_SEC) << " seconde" << endl;
-   cout << "==> " << (int)tempMis / entree << " seconde par lettre."
+   cout << "Temps ecoule : " << (temps / CLOCKS_PER_SEC) << " seconde" << endl;
+   cout << "==> " << (int)tempMis / nbreLancees << " seconde par lettre."
         << endl;
 
 
