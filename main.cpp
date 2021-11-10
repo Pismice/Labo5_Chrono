@@ -29,75 +29,87 @@ Compilateur     : Mingw-w64 g++ 11.2.0
 
 using namespace std;
 
+/// Updated upstream
 int main() {
    // Choix des intervalles pour le nombre de lancées
    const int B_INF =  1,
              B_SUP = 10;
 
+   char continuer;
+
+   // Génération du seed random
+   srand((unsigned int)time(nullptr));
+
    // Explication du programme à l'utilisateur
    cout << "Bonjour ce programme permet de tester "
            "votre habilté au clavier :" << endl;
-   cout << "Combien de lancees [" << B_INF << " - " << B_SUP << "] :";
 
    // Saisie du nombre lancées
    int nbreLancees;
-   bool erreurEntreeLancees;
+   bool erreurEntreeLancees = false;
+
    do
    {
-      cin >> nbreLancees;
 
-      if(!cin.good() || nbreLancees < B_INF || nbreLancees > B_SUP)
+      do
       {
-         erreurEntreeLancees = true;
-         cin.clear();
+         cout << "Combien de lancees [" << B_INF << " - " << B_SUP << "] :";
+         cin >> nbreLancees;
+
+         if(!cin.good() || nbreLancees < B_INF || nbreLancees > B_SUP)
+         {
+            erreurEntreeLancees = true;
+            cin.clear();
+         }
+
+         cin.ignore(numeric_limits<streamsize>::max(), '\n');
+      }while (erreurEntreeLancees);
+
+      int nbreReponsesCorrectes = 0;   // Score de l'utilisateur
+      char userCharacter;              // Caractère rentré par l'utilisateur
+
+      // TODO: DIDIER ?
+      clock_t temps;
+      temps = clock();
+
+      // Variables nécessaires pour la boucle
+      char randomCharacter;
+      char BEGIN  = 'a';
+      char END    = 'z';
+
+      // Boucle le nombre de fois désirés par l'utilisateur
+      for(int i = 0; i < nbreLancees; ++i){
+         randomCharacter = genererCharactereAleatoire(BEGIN,END);
+
+         cout << randomCharacter << " :";
+
+         cin >> userCharacter;
+
+         if(userCharacter == randomCharacter){
+            ++nbreReponsesCorrectes;
+         }
       }
 
+      temps = clock() - temps;
+
+      // Affichage du score de l'utilisateur
+      cout << endl;
+      cout << "Nombre de reponse correcte :" << nbreReponsesCorrectes << endl;
+      int tempMis = (temps / CLOCKS_PER_SEC);
+
+      // Affichage du temps qui s'est écoulé et le temps moyen mis
+      // par l'utilisateur entre chaque lettre
+      cout << "Temps ecoule : " << tempMis << " seconde" << endl;
+      cout << "==> " << (int)tempMis / nbreLancees << " seconde par lettre." << endl;
+
+      cout << endl;
+
+      cout << "Voulez-vous recommencer ? [o/n] :";
+      cin >> continuer;
+      cin.clear();
       cin.ignore(numeric_limits<streamsize>::max(), '\n');
-   }while(erreurEntreeLancees);
 
-   // Génération du seed random
-   srand(time(NULL));
-
-   int nbreReponsesCorrectes = 0;   // Score de l'utilisateur
-   char userCharacter;              // Caractère rentré par l'utilisateur
-
-   // TODO: DIDIER ?
-   clock_t temps;
-   temps = clock();
-
-   // Variables nécessaires pour la boucle
-   char randomCharacter;
-   char BEGIN  = 'a';
-   char END    = 'z';
-
-   // Boucle le nombre de fois désirés par l'utilisateur
-   for(int i = 0; i < nbreLancees; ++i){
-      randomCharacter = genererCharactereAleatoire(BEGIN,END);
-
-      cout << randomCharacter << " :";
-
-      cin >> userCharacter;
-
-      if(userCharacter == randomCharacter){
-         ++nbreReponsesCorrectes;
-      }
-   }
-
-   // TODO : DIDIER ?
-   temps = clock() - temps;
-
-   // Affichage du score de l'utilisateur
-   cout << endl;
-   cout << "Nombre de reponse correcte :" << nbreReponsesCorrectes << endl;
-   int tempMis = (temps / CLOCKS_PER_SEC);
-
-   // Affichage du temps qui s'est écoulé et le temps moyen mis
-   // par l'utilisateur entre chaque lettre
-   cout << tempMis << endl;
-   cout << "Temps ecoule : " << (temps / CLOCKS_PER_SEC) << " seconde" << endl;
-   cout << "==> " << (int)tempMis / nbreLancees << " seconde par lettre."
-        << endl;
-
+   }while(continuer == 'o' or continuer == 'O');
 
    return EXIT_SUCCESS;
 }
