@@ -24,18 +24,14 @@ Compilateur     : Mingw-w64 g++ 11.2.0
 #include <ctime>           // Librairie qui permet l'utilisation d'un timer
 #include <iostream>        // Librairie qui permet d'utiliser les cin et cout
 #include "GenererChar.h"   // Librairie qui permet de générer des char aléatoires
-#include <limits>          // Librairie qui permet d'utiliser numeric_limits pour
-                           // vider le buffer
+#include <limits>          // Librairie qui permet d'utiliser numeric_limits
 
 using namespace std;
 
-/// Updated upstream
 int main() {
    // Choix des intervalles pour le nombre de lancées
    const int B_INF =  1,
              B_SUP = 10;
-
-   char continuer;
 
    // Génération du seed random
    srand((unsigned int)time(nullptr));
@@ -48,9 +44,14 @@ int main() {
    int nbreLancees;
    bool erreurEntreeLancees = false;
 
+   // Charactère rentré par l'utilisateur qui va définir si le programme
+   // recommence ou pas
+   char continuer;
+
+   // Boucle du programme, quand elle recommence, leu jeu recommence
    do
    {
-
+      // Boucle de saisie, pour obtenir une saisie utilisateur correcte
       do
       {
          cout << "Combien de lancees [" << B_INF << " - " << B_SUP << "] :";
@@ -104,10 +105,20 @@ int main() {
 
       cout << endl;
 
-      cout << "Voulez-vous recommencer ? [o/n] :";
-      cin >> continuer;
-      cin.clear();
-      cin.ignore(numeric_limits<streamsize>::max(), '\n');
+      // Boucle de saisie utilisateur, pour savoir si il veut recommencer ou pas
+      bool erreurCharRecommencer;
+      do{
+         cout << "Voulez-vous recommencer ? [o/n] :";
+         cin >> continuer;
+
+         if(!cin.good() || (continuer != 'o' && continuer != 'O' && continuer != 'n'))
+         {
+            erreurCharRecommencer = true;
+            cin.clear();
+         }
+
+         cin.ignore(numeric_limits<streamsize>::max(), '\n');
+      }while(erreurCharRecommencer);
 
    }while(continuer == 'o' or continuer == 'O');
 
