@@ -34,5 +34,6 @@
 *.txt
 
 #folders
+cmake_build_debug
 cmake_build_debug/
 .idea/
