@@ -20,6 +20,7 @@ Remarque(s)     : - Les saisies utilisteur sont contrôlées
 Compilateur     : Mingw-w64 g++ 11.2.0
 -----------------------------------------------------------------------------------
 */
+#include <random>
 #include <cstdlib>         // Librairie qui permet d'utiliser EXIT_SUCCESS
 #include <ctime>           // Librairie qui permet l'utilisation d'un timer
 #include <iostream>        // Librairie qui permet d'utiliser les cin et cout
@@ -27,6 +28,10 @@ Compilateur     : Mingw-w64 g++ 11.2.0
 #include <limits>          // Librairie qui permet d'utiliser numeric_limits
 
 using namespace std;
+
+////// Apparament c'est possible de modifier le code depuis ici.
+///// Depuis tout a l'heure qund je pull je vois bien le fichier que tu as modifié mais 
+///// dans mon CLion je ne vois pas les modif
 
 int main() {
    // Choix des intervalles pour le nombre de lancées
@@ -42,7 +47,7 @@ int main() {
 
    // Saisie du nombre lancées
    int nbreLancees;
-   bool erreurEntreeLancees = false;
+   bool erreurEntreeLancees;
 
    // Charactère rentré par l'utilisateur qui va définir si le programme
    // recommence ou pas
@@ -54,6 +59,8 @@ int main() {
       // Boucle de saisie, pour obtenir une saisie utilisateur correcte
       do
       {
+         erreurEntreeLancees = false;
+
          cout << "Combien de lancees [" << B_INF << " - " << B_SUP << "] :";
          cin >> nbreLancees;
 
@@ -119,6 +126,8 @@ int main() {
 
          cin.ignore(numeric_limits<streamsize>::max(), '\n');
       }while(erreurCharRecommencer);
+
+      cout << endl;
 
    }while(continuer == 'o' or continuer == 'O');
 
