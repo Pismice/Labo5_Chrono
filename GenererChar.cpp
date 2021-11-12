@@ -5,10 +5,6 @@
 #include <random>          // Librairie qui permet la génération de valeurs aléatoires
 
 char genererCharactereAleatoire(unsigned char begin, unsigned char end){
-
-   // Génération du seed random
-   srand((unsigned int)time(nullptr));
-
    int premierCharactere = int(begin);
    int dernierCharactere = int(end);
 
