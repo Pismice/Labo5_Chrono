@@ -38,9 +38,6 @@ int main() {
    const int B_INF =  1,
              B_SUP = 10;
 
-   // Génération du seed random
-   srand((unsigned int)time(nullptr));
-
    // Explication du programme à l'utilisateur
    cout << "Bonjour ce programme permet de tester "
            "votre habilté au clavier :" << endl;
