@@ -24,7 +24,7 @@ Compilateur     : Mingw-w64 g++ 11.2.0
 #include "saisieIdentiqueA.h"                // Librairie qui permet de vérifier si la saisie
 #include "saisiesUtilisateur.h"              // Librairie qui permet de gérer plus facilement
                                              // des saisies utilisateurs
-#include "generationCharactereAleatoire.h"   // Librairie qui permet de générer des char aléatoires
+#include "genererAleatoirement.h"   // Librairie qui permet de générer des char aléatoires
 #include "chronometre.h"                     // Librairie qui permet de manipuler un chronomètre
 #include <cstdlib>                           // Librairie qui permet d'utiliser EXIT_SUCCESS
 #include <iostream>                          // Librairie qui permet d'utiliser les cin et cout
