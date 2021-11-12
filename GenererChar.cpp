@@ -1,7 +1,6 @@
 //
 // TODO : ENTETE ?
 //
-#include "GenererChar.h"
 #include <random>          // Librairie qui permet la génération de valeurs aléatoires
 
 char genererCharactereAleatoire(char begin, char end){

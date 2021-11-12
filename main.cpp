@@ -26,6 +26,7 @@ Compilateur     : Mingw-w64 g++ 11.2.0
 #include <iostream>        // Librairie qui permet d'utiliser les cin et cout
 #include "GenererChar.h"   // Librairie qui permet de générer des char aléatoires
 #include <limits>          // Librairie qui permet d'utiliser numeric_limits
+#include <random>          // Librairie qui permet la génération de valeurs aléatoires
 
 using namespace std;
 
@@ -115,6 +116,9 @@ int main() {
       // Boucle de saisie utilisateur, pour savoir si il veut recommencer ou pas
       bool erreurCharRecommencer;
       do{
+
+         erreurCharRecommencer = false;
+
          cout << "Voulez-vous recommencer ? [o/n] :";
          cin >> continuer;
 
@@ -132,4 +136,16 @@ int main() {
    }while(continuer == 'o' or continuer == 'O');
 
    return EXIT_SUCCESS;
+}
+
+
+char genererCharactereAleatoire(char begin, char end){
+   int premierCharactere = int(begin);
+   int dernierCharactere = int(end);
+
+   int difference = dernierCharactere - premierCharactere;
+
+   int valeurAleatoire = rand() % difference + 1;
+
+   return char(premierCharactere + valeurAleatoire);
 }
