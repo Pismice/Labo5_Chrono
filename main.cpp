@@ -54,8 +54,8 @@ int main() {
 
    // Variables nécessaires pour la boucle
    char randomCharacter;
-   char BEGIN  = 'a';
-   char END    = 'z';
+   unsigned char BEGIN  = 'a';
+   unsigned char END    = 'z';
 
    // Boucle le nombre de fois désirés par l'utilisateur
    for(int i = 0; i < nbreLancees; ++i){

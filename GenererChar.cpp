@@ -1,7 +1,6 @@
 //
 // TODO : ENTETE ?
 //
-#include <ctime>
 #include <random>          // Librairie qui permet la génération de valeurs aléatoires
 
 char genererCharactereAleatoire(unsigned char begin, unsigned char end){
