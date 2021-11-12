@@ -2,6 +2,7 @@
 // Created by admin on 12.11.2021.
 //
 #include <iostream>
+#include <limits>
 
 bool erreurEntreeLancees;
 bool erreurCharRecommencer;

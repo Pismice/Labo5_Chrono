@@ -25,7 +25,6 @@ Compilateur     : Mingw-w64 g++ 11.2.0
 #include <ctime>           // Librairie qui permet l'utilisation d'un timer
 #include <iostream>        // Librairie qui permet d'utiliser les cin et cout
 #include "GenererChar.h"   // Librairie qui permet de générer des char aléatoires
-#include <limits>          // Librairie qui permet d'utiliser numeric_limits
 #include <random>          // Librairie qui permet la génération de valeurs aléatoires
 
 using namespace std;
@@ -92,15 +91,4 @@ int main() {
    cout << endl;
 
    return EXIT_SUCCESS;
-}
-
-char genererCharactereAleatoire(char begin, char end){
-   int premierCharactere = int(begin);
-   int dernierCharactere = int(end);
-
-   int difference = dernierCharactere - premierCharactere;
-
-   int valeurAleatoire = rand() % difference + 1;
-
-   return char(premierCharactere + valeurAleatoire);
 }
