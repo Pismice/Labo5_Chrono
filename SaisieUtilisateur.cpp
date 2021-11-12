@@ -8,7 +8,7 @@ bool erreurCharRecommencer;
 
 // Charactère rentré par l'utilisateur qui va définir si le programme
 // recommence ou pas
-char continuer;
+char continuee;
 
 // Boucle de saisie, pour obtenir une saisie utilisateur correcte
 int nombreLancee(int B_inf, int B_sup){
@@ -45,10 +45,10 @@ void continuer(){
       erreurCharRecommencer = false;
 
       std::cout << "Voulez-vous recommencer ? [o/n] :";
-      std::cin >> continuer;
+      std::cin >> continuee;
 
-      if(!std::cin.good() || (continuer != 'o' && continuer != 'O' && continuer !=
-      'n'))
+      if(!std::cin.good() || (continuee != 'o' && continuee != 'O' && continuee !=
+                                                                      'n'))
       {
          erreurCharRecommencer = true;
          std::cin.clear();

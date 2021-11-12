@@ -84,11 +84,23 @@ int main() {
    // Affichage du temps qui s'est écoulé et le temps moyen mis
    // par l'utilisateur entre chaque lettre
    cout << "Temps ecoule : " << tempMis << " seconde" << endl;
-   cout << "==> " << (int)tempMis / nbreLancees << " seconde par lettre." << endl;
+   cout << "==> " << (int)tempMis / nbreLancees << " seconde par lettre." << endl
+   << endl;
 
    continuer();
 
    cout << endl;
 
    return EXIT_SUCCESS;
+}
+
+char genererCharactereAleatoire(char begin, char end){
+   int premierCharactere = int(begin);
+   int dernierCharactere = int(end);
+
+   int difference = dernierCharactere - premierCharactere;
+
+   int valeurAleatoire = rand() % difference + 1;
+
+   return char(premierCharactere + valeurAleatoire);
 }
