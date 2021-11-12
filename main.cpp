@@ -20,19 +20,14 @@ Remarque(s)     : - Les saisies utilisteur sont contrôlées
 Compilateur     : Mingw-w64 g++ 11.2.0
 -----------------------------------------------------------------------------------
 */
-#include "SaisieUtilisateur.h"
-#include "GenererChar.h"   // Librairie qui permet de générer des char aléatoires
+#include "saisiesUtilisateur.h"
+#include "generationCharactereAleatoire.h"   // Librairie qui permet de générer des char aléatoires
 #include "chronometre.h"
 #include <cstdlib>         // Librairie qui permet d'utiliser EXIT_SUCCESS
 #include <iostream>        // Librairie qui permet d'utiliser les cin et cout
 #include <random>          // Librairie qui permet la génération de valeurs aléatoires
-#include <iomanip>
 
 using namespace std;
-
-////// Apparament c'est possible de modifier le code depuis ici.
-///// Depuis tout a l'heure qund je pull je vois bien le fichier que tu as modifié mais 
-///// dans mon CLion je ne vois pas les modif
 
 int main() {
    // Choix des intervalles pour le nombre de lancées
@@ -50,12 +45,12 @@ int main() {
       int nbreReponsesCorrectes = 0;   // Score de l'utilisateur
       char userCharacter;              // Caractère rentré par l'utilisateur
 
-      demarrerChronometre();
-
       // Variables nécessaires pour la boucle
       char randomCharacter;
       unsigned char BEGIN = 'a';
       unsigned char END = 'z';
+
+      demarrerChronometre();
 
       // Boucle le nombre de fois désirés par l'utilisateur
       for (int i = 0; i < nbreLancees; ++i) {
