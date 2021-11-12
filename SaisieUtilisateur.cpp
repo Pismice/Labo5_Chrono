@@ -4,16 +4,14 @@
 #include <iostream>
 #include <limits>
 
-bool erreurEntreeLancees;
-bool erreurCharRecommencer;
 
-// Charactère rentré par l'utilisateur qui va définir si le programme
-// recommence ou pas
-char continuee;
+
+
+
 
 // Boucle de saisie, pour obtenir une saisie utilisateur correcte
 int nombreLancee(int B_inf, int B_sup){
-
+   bool erreurEntreeLancees;
    // nombre lancées a saisir
    int lancees;
 
@@ -39,8 +37,11 @@ int nombreLancee(int B_inf, int B_sup){
 }
 
 // Boucle de saisie utilisateur, pour savoir si il veut recommencer ou pas
-void continuer(){
-
+char continuer(){
+   // Charactère rentré par l'utilisateur qui va définir si le programme
+// recommence ou pas
+   char continuee;
+   bool erreurCharRecommencer;
    do{
 
       erreurCharRecommencer = false;
@@ -58,4 +59,5 @@ void continuer(){
       std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
    }while(erreurCharRecommencer);
 
+   return continuee;
 }

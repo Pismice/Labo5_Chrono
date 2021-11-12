@@ -21,11 +21,12 @@ Compilateur     : Mingw-w64 g++ 11.2.0
 -----------------------------------------------------------------------------------
 */
 #include "SaisieUtilisateur.h"
-#include <cstdlib>         // Librairie qui permet d'utiliser EXIT_SUCCESS
-#include <ctime>           // Librairie qui permet l'utilisation d'un timer
-#include <iostream>        // Librairie qui permet d'utiliser les cin et cout
 #include "GenererChar.h"   // Librairie qui permet de générer des char aléatoires
+#include "chronometre.h"
+#include <cstdlib>         // Librairie qui permet d'utiliser EXIT_SUCCESS
+#include <iostream>        // Librairie qui permet d'utiliser les cin et cout
 #include <random>          // Librairie qui permet la génération de valeurs aléatoires
+#include <iomanip>
 
 using namespace std;
 
@@ -42,48 +43,46 @@ int main() {
    cout << "Bonjour ce programme permet de tester "
            "votre habilté au clavier :" << endl;
 
-   // Boucle du programme, quand elle recommence, leu jeu recommence
-   int nbreLancees = nombreLancee(B_INF, B_SUP);
+   do {
+      // Boucle du programme, quand elle recommence, leu jeu recommence
+      int nbreLancees = nombreLancee(B_INF, B_SUP);
 
-   int nbreReponsesCorrectes = 0;   // Score de l'utilisateur
-   char userCharacter;              // Caractère rentré par l'utilisateur
+      int nbreReponsesCorrectes = 0;   // Score de l'utilisateur
+      char userCharacter;              // Caractère rentré par l'utilisateur
 
-   // TODO: DIDIER ?
-   clock_t tempsInitial, tempsFinal;
-   tempsInitial = clock(); // initialisation du temps avec le temps de l'ordinateur
+      demarrerChronometre();
 
-   // Variables nécessaires pour la boucle
-   char randomCharacter;
-   unsigned char BEGIN  = 'a';
-   unsigned char END    = 'z';
+      // Variables nécessaires pour la boucle
+      char randomCharacter;
+      unsigned char BEGIN = 'a';
+      unsigned char END = 'z';
 
-   // Boucle le nombre de fois désirés par l'utilisateur
-   for(int i = 0; i < nbreLancees; ++i){
-      randomCharacter = genererCharactereAleatoire(BEGIN,END);
+      // Boucle le nombre de fois désirés par l'utilisateur
+      for (int i = 0; i < nbreLancees; ++i) {
+         randomCharacter = genererCharactereAleatoire(BEGIN, END);
 
-      cout << randomCharacter << " :";
+         cout << randomCharacter << " :";
 
-      cin >> userCharacter;
+         cin >> userCharacter;
 
-      if(userCharacter == randomCharacter){
-         ++nbreReponsesCorrectes;
+         if (userCharacter == randomCharacter) {
+            ++nbreReponsesCorrectes;
+         }
       }
-   }
 
-   tempsFinal = clock() - tempsInitial;
+      double tempsTotal = tempsApresDebutChronometre();
 
-   // Affichage du score de l'utilisateur
-   cout << endl;
-   cout << "Nombre de reponse correcte :" << nbreReponsesCorrectes << endl;
-   int tempMis = (tempsFinal / CLOCKS_PER_SEC);
+      // Affichage du score de l'utilisateur
+      cout << endl;
+      cout << "Nombre de reponse correcte :" << nbreReponsesCorrectes << endl;
 
-   // Affichage du temps qui s'est écoulé et le temps moyen mis
-   // par l'utilisateur entre chaque lettre
-   cout << "Temps ecoule : " << tempMis << " seconde" << endl;
-   cout << "==> " << (int)tempMis / nbreLancees << " seconde par lettre." << endl
-   << endl;
-
-   continuer();
+      // Affichage du temps qui s'est écoulé et le temps moyen mis
+      // par l'utilisateur entre chaque lettre
+      cout << "Temps ecoule : " << tempsTotal << " secondes" << endl;
+      cout << "==> " << tempsTotal / (double) nbreLancees << " seconde par lettre."
+           << endl
+           << endl;
+   }while(continuer() == 'o');
 
    cout << endl;
 

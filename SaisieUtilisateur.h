@@ -7,6 +7,6 @@
 
 int nombreLancee(int B_inf, int B_sup);
 
-void continuer();
+char continuer();
 
 #endif //LABO5_CHORNO_SAISIEUTILISATEUR_H
