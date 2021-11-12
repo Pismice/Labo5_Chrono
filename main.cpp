@@ -75,11 +75,8 @@ int main() {
       // par l'utilisateur entre chaque lettre
       cout << "Temps ecoule : " << tempsTotal << " secondes" << endl;
       cout << "==> " << tempsTotal / (double) nbreLancees << " seconde par lettre."
-           << endl
-           << endl;
+      << endl << endl;
    }while(continuer() == 'o');
-
-   cout << endl;
 
    return EXIT_SUCCESS;
 }
