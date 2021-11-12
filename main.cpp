@@ -20,6 +20,7 @@ Remarque(s)     : - Les saisies utilisteur sont contrôlées
 Compilateur     : Mingw-w64 g++ 11.2.0
 -----------------------------------------------------------------------------------
 */
+#include "affichage.h"
 #include "saisieIdentiqueA.h"                // Librairie qui permet de vérifier si la saisie
 #include "saisiesUtilisateur.h"              // Librairie qui permet de gérer plus facilement
                                              // des saisies utilisateurs
@@ -37,8 +38,7 @@ int main() {
              B_SUP = 10;
 
    // Explication du programme à l'utilisateur
-   cout << "Bonjour ce programme permet de tester "
-           "votre habilté au clavier :" << endl;
+   cout << "Bonjour ce programme permet de tester votre habilté au clavier :" << endl;
 
    // Boucle qui s'execute tant que l'utilisateur veut jouer
    do {
@@ -65,15 +65,12 @@ int main() {
       double tempsTotal = tempsApresDebutChronometre();
       double tempsMoyen = tempsTotal / (double) nbreLancees;
 
-      // Affichage du score de l'utilisateur
-      cout << endl;
-      cout << "Nombre de reponse correcte :" << nbreReponsesCorrectes << endl;
+      // TODO :REGARDER DANS LE .H CAR 2 VERSIONS DIFFERENTES
+      affichageDuResultat("Nombre de réponses correctes", nbreReponsesCorrectes);
+      affichageDuResultat("Temps écoulé", tempsTotal, 2);
+      affichageDuResultat("Temps moyen par lettre",tempsMoyen, 2);
 
-      // Affichage du temps qui s'est écoulé et le temps moyen mis
-      // par l'utilisateur entre chaque lettre
-      cout << "Temps ecoule : " << tempsTotal << " secondes" << endl;
-      cout << "==> " << tempsMoyen << " seconde par lettre."
-      << endl << endl;
+
    }while(saisieCharactere() == 'o');
 
    return EXIT_SUCCESS;
