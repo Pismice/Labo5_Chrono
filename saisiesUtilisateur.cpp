@@ -4,21 +4,14 @@
 #include <iostream>
 #include <limits>
 
-
-
-
-
-
 // Boucle de saisie, pour obtenir une saisie utilisateur correcte
-int nombreLancee(int B_inf, int B_sup){
+int saisieDansIntervalle(int B_inf, int B_sup){
    bool erreurEntreeLancees;
    // nombre lancées a saisir
    int lancees;
 
    do
    {
-
-
       erreurEntreeLancees = false;
 
       std::cout << "Combien de lancees [" << B_inf << " - " << B_sup << "] :";
@@ -37,7 +30,7 @@ int nombreLancee(int B_inf, int B_sup){
 }
 
 // Boucle de saisie utilisateur, pour savoir si il veut recommencer ou pas
-char continuer(){
+char saisieCharactere(){
    // Charactère rentré par l'utilisateur qui va définir si le programme
 // recommence ou pas
    char continuee;

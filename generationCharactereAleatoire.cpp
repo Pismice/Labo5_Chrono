@@ -3,7 +3,7 @@
 //
 #include <random>          // Librairie qui permet la génération de valeurs aléatoires
 
-char genererCharactereAleatoire(unsigned char begin, unsigned char end){
+char genererCharactereAleatoireEntre(const unsigned char& begin, const unsigned char& end){
    int premierCharactere = int(begin);
    int dernierCharactere = int(end);
 

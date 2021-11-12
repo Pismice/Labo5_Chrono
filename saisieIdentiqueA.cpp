@@ -3,10 +3,9 @@
 //
 
 #include "saisieIdentiqueA.h"
-#include "generationCharactereAleatoire.h"
 #include <iostream>
 
-bool saisieIdentiqueA(char reponse)
+bool saisieIdentiqueA(const char& reponse)
 {
    char userCharacter;
 

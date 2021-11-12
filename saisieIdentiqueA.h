@@ -5,6 +5,6 @@
 #ifndef LABO5_CHRONO_SAISIEIDENTIQUEA_H
 #define LABO5_CHRONO_SAISIEIDENTIQUEA_H
 
-bool saisieIdentiqueA(char reponse);
+bool saisieIdentiqueA(const char& reponse);
 
 #endif //LABO5_CHRONO_SAISIEIDENTIQUEA_H
