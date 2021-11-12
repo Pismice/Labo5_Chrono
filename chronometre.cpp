@@ -14,12 +14,6 @@ void demarrerChronometre()
    chronoInitialise = true;
 }
 
-void arreterChronometre()
-{
-   debutChrono = 0.;
-   chronoInitialise = false;
-}
-
 double tempsApresDebutChronometre()
 {
    if(chronoInitialise)

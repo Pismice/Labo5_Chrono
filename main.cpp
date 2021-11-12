@@ -20,9 +20,11 @@ Remarque(s)     : - Les saisies utilisteur sont contrôlées
 Compilateur     : Mingw-w64 g++ 11.2.0
 -----------------------------------------------------------------------------------
 */
-#include "saisiesUtilisateur.h"
+#include "saisieIdentiqueA.h"
+#include "saisiesUtilisateur.h"              // Librairie qui permet de gérer plus facilement
+                                             // des saisies utilisateurs
 #include "generationCharactereAleatoire.h"   // Librairie qui permet de générer des char aléatoires
-#include "chronometre.h"
+#include "chronometre.h"                     // Librairie qui permet de manipuler un chronomètre
 #include <cstdlib>         // Librairie qui permet d'utiliser EXIT_SUCCESS
 #include <iostream>        // Librairie qui permet d'utiliser les cin et cout
 #include <random>          // Librairie qui permet la génération de valeurs aléatoires
@@ -43,10 +45,8 @@ int main() {
       int nbreLancees = nombreLancee(B_INF, B_SUP);
 
       int nbreReponsesCorrectes = 0;   // Score de l'utilisateur
-      char userCharacter;              // Caractère rentré par l'utilisateur
 
       // Variables nécessaires pour la boucle
-      char randomCharacter;
       unsigned char BEGIN = 'a';
       unsigned char END = 'z';
 
@@ -54,15 +54,7 @@ int main() {
 
       // Boucle le nombre de fois désirés par l'utilisateur
       for (int i = 0; i < nbreLancees; ++i) {
-         randomCharacter = genererCharactereAleatoire(BEGIN, END);
-
-         cout << randomCharacter << " :";
-
-         cin >> userCharacter;
-
-         if (userCharacter == randomCharacter) {
-            ++nbreReponsesCorrectes;
-         }
+         nbreReponsesCorrectes += saisieIdentiqueA(genererCharactereAleatoire(BEGIN,END));
       }
 
       double tempsTotal = tempsApresDebutChronometre();
