@@ -5,7 +5,7 @@
 #ifndef LABO5_CHRONO_CHRONOMETRE_H
 #define LABO5_CHRONO_CHRONOMETRE_H
 
-void demarrerChronometre();
+void   demarrerChronometre();
 double tempsApresDebutChronometre();
 
 #endif //LABO5_CHRONO_CHRONOMETRE_H

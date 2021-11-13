@@ -21,14 +21,14 @@ Compilateur     : Mingw-w64 g++ 11.2.0
 -----------------------------------------------------------------------------------
 */
 #include "affichage.h"
-#include "saisieIdentiqueA.h"                // Librairie qui permet de vérifier si la saisie
-#include "saisiesUtilisateur.h"              // Librairie qui permet de gérer plus facilement
-                                             // des saisies utilisateurs
-#include "genererAleatoirement.h"   // Librairie qui permet de générer des char aléatoires
-#include "chronometre.h"                     // Librairie qui permet de manipuler un chronomètre
-#include <cstdlib>                           // Librairie qui permet d'utiliser EXIT_SUCCESS
-#include <iostream>                          // Librairie qui permet d'utiliser les cin et cout
-#include <random>                            // Librairie qui permet la génération de valeurs aléatoires
+#include "saisieIdentiqueA.h"     // Librairie qui permet de vérifier si la saisie
+#include "saisiesUtilisateur.h"   // Librairie qui permet de gérer plus facilement
+                                  // des saisies utilisateurs
+#include "genererAleatoirement.h" // Librairie qui permet de générer des char
+                                  // aléatoires
+#include "chronometre.h"          // Librairie qui permet de manipuler un chronomètre
+#include <cstdlib>                // Librairie qui permet d'utiliser EXIT_SUCCESS
+#include <iostream>               // Librairie qui permet d'utiliser les cin et cout
 
 using namespace std;
 
@@ -38,7 +38,8 @@ int main() {
              B_SUP = 10;
 
    // Explication du programme à l'utilisateur
-   cout << "Bonjour ce programme permet de tester votre habilté au clavier :" << endl;
+   cout << "Bonjour ce programme permet de tester votre habilté au clavier :"
+   << endl;
 
    // Boucle qui s'execute tant que l'utilisateur veut jouer
    do {
@@ -66,10 +67,12 @@ int main() {
       double tempsMoyen = tempsTotal / (double) nbreLancees;
 
       // TODO :REGARDER DANS LE .H CAR 2 VERSIONS DIFFERENTES
-      affichageDuResultat("Nombre de réponses correctes", nbreReponsesCorrectes);
-      affichageDuResultat("Temps écoulé", tempsTotal, 2);
+      affichageDuResultat("Nombre de reponses correctes",
+                          nbreReponsesCorrectes);
+      affichageDuResultat("Temps ecouler", tempsTotal, 2);
       affichageDuResultat("Temps moyen par lettre",tempsMoyen, 2);
 
+      cout << endl;
 
    }while(saisieCharactere() == 'o');
 
