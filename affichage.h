@@ -17,7 +17,7 @@ Compilateur     : Mingw-w64 g++ 11.2.0
 #ifndef LABO5_CHRONO_AFFICHAGE_H
 #define LABO5_CHRONO_AFFICHAGE_H
 
-void affichageDuResultat(const char *message, const double& resultat, const int& precision);
+void affichageDuResultat(const char *message, const double& resultat, const int& precision = 2);
 void affichageDuResultat(const char *message, const int& resultat);
 
 #endif //LABO5_CHRONO_AFFICHAGE_H
