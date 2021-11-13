@@ -15,18 +15,25 @@ Description     : Ce programme permet de tester la dexterité et la rapidité au
                   moyen passé par lettre.
                   L'utilisateur est ensuite invité à recommencer le programme.
 
+Modification(s) : -
+
 Remarque(s)     : - Les saisies utilisteur sont contrôlées
+                  - L'affichage se fait légèrement différement à celui proposé, car
+                    après validation par l'assistant Gabriel Roch, jugé plus propre
+                    par Jérémie Santoro et Didier Lokokpe
+                  - Il est possible via une constante de changer le nombre de chiffres
+                    après la virgule à afficher
+                  - Il est possible via des constantes de changer les bornes pour le
+                    nombres de lancées MAX et MIN voulus par l'utilisateur
 
 Compilateur     : Mingw-w64 g++ 11.2.0
 -----------------------------------------------------------------------------------
 */
-#include "affichage.h"
-#include "saisieIdentiqueA.h"     // Librairie qui permet de vérifier si la saisie
-#include "saisiesUtilisateur.h"   // Librairie qui permet de gérer plus facilement
-                                  // des saisies utilisateurs
-#include "genererAleatoirement.h" // Librairie qui permet de générer des char
-                                  // aléatoires
-#include "chronometre.h"          // Librairie qui permet de manipuler un chronomètre
+#include "affichage.h"            // Permet de simplifier l'affichage
+#include "saisiesUtilisateur.h"   // Permet de gérer les saisies utilisateurs (avec controle)
+#include "genererAleatoirement.h" // Permet de générer des valeurs aléatoires
+#include "chronometre.h"          // Permet de manipuler un chronomètre
+
 #include <cstdlib>                // Librairie qui permet d'utiliser EXIT_SUCCESS
 #include <iostream>               // Librairie qui permet d'utiliser les cin et cout
 
@@ -37,16 +44,19 @@ int main() {
    const int B_INF =  1,
              B_SUP = 10;
 
+   const int CHIFFRES_APRES_VIRGULE = 2;
+
    // Explication du programme à l'utilisateur
-   cout << "Bonjour ce programme permet de tester votre habilté au clavier :"
-   << endl;
+   cout << "Bonjour ce programme permet de tester votre habilté au clavier :" << endl;
+
+   // Score de l'utilisateur
+   int nbreReponsesCorrectes;
 
    // Boucle qui s'execute tant que l'utilisateur veut jouer
    do {
-      int nbreLancees = saisieDansIntervalle(B_INF, B_SUP);
+      int nbreLancees = saisieDansIntervalle(B_INF, B_SUP, "lancees");
 
-      // Score de l'utilisateur
-      int nbreReponsesCorrectes = 0;
+      nbreReponsesCorrectes = 0;
 
       // Intervalles dans lesquelles les charactères seront tirés
       unsigned char BEGIN = 'a';
@@ -59,22 +69,20 @@ int main() {
       for (int i = 0; i < nbreLancees; ++i) {
          // Si l'entrée fournie par l'utilisateur correspond au charactère
          // alétoire, alors incrémente le nombre de réponses correctes
-         nbreReponsesCorrectes += saisieIdentiqueA(
-            genererCharactereAleatoireEntre(BEGIN, END));
+         nbreReponsesCorrectes += saisieIdentiqueA(genererCharactereAleatoireEntre(BEGIN, END));
       }
 
       double tempsTotal = tempsApresDebutChronometre();
       double tempsMoyen = tempsTotal / (double) nbreLancees;
 
-      // TODO :REGARDER DANS LE .H CAR 2 VERSIONS DIFFERENTES
-      affichageDuResultat("Nombre de reponses correctes",
-                          nbreReponsesCorrectes);
-      affichageDuResultat("Temps ecouler", tempsTotal, 2);
-      affichageDuResultat("Temps moyen par lettre",tempsMoyen, 2);
+
+      affichageDuResultat("Nombre de reponses correctes",nbreReponsesCorrectes);
+      affichageDuResultat("Temps ecouler", tempsTotal, CHIFFRES_APRES_VIRGULE);
+      affichageDuResultat("Temps moyen par lettre",tempsMoyen, CHIFFRES_APRES_VIRGULE);
 
       cout << endl;
 
-   }while(saisieCharactere() == 'o');
+   }while(saisieCharactereDecisionRecommencer() == 'o');
 
    return EXIT_SUCCESS;
 }

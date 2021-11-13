@@ -5,8 +5,8 @@
 #include <ctime>
 #include "chronometre.h"
 
-clock_t debutChrono;
-bool chronoInitialise = false;
+static clock_t debutChrono;
+static bool chronoInitialise = false;
 
 void demarrerChronometre()
 {

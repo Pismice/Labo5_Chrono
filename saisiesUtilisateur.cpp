@@ -5,52 +5,60 @@
 #include <limits>
 
 // Boucle de saisie, pour obtenir une saisie utilisateur correcte
-int saisieDansIntervalle(int B_inf, int B_sup){
-   bool erreurEntreeLancees;
-   // nombre lancées a saisir
-   int lancees;
+int saisieDansIntervalle(const int& B_inf, const int& B_sup, const char *valeur){
+   int valeurSaisieIntervalle;
+   bool erreurSaisieIntervalle;
 
    do
    {
-      erreurEntreeLancees = false;
+      erreurSaisieIntervalle = false;
 
-      std::cout << "Combien de lancees [" << B_inf << " - " << B_sup << "] :";
-      std::cin >> lancees;
+      std::cout << "Combien de " << valeur << "[" << B_inf << " - " << B_sup << "] :";
+      std::cin >> valeurSaisieIntervalle;
 
-      if(!std::cin.good() || lancees < B_inf || lancees > B_sup)
+      if(!std::cin.good() || valeurSaisieIntervalle < B_inf || valeurSaisieIntervalle > B_sup)
       {
-         erreurEntreeLancees = true;
+         erreurSaisieIntervalle = true;
          std::cin.clear();
       }
 
       std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-   }while (erreurEntreeLancees);
+   }while (erreurSaisieIntervalle);
 
-   return lancees;
+   return valeurSaisieIntervalle;
 }
 
 // Boucle de saisie utilisateur, pour savoir si il veut recommencer ou pas
-char saisieCharactere(){
-   // Charactère rentré par l'utilisateur qui va définir si le programme
-// recommence ou pas
-   char continuee;
-   bool erreurCharRecommencer;
+char saisieCharactereDecisionRecommencer(){
+   char valeurSaisie;
+   bool erreurSaisieCharactere;
+
    do{
 
-      erreurCharRecommencer = false;
+      erreurSaisieCharactere = false;
 
       std::cout << "Voulez-vous recommencer ? [o/n] :";
-      std::cin >> continuee;
+      std::cin >> valeurSaisie;
 
-      if(!std::cin.good() || (continuee != 'o' && continuee != 'O' && continuee !=
-                                                                      'n'))
+      if(!std::cin.good() || (valeurSaisie != 'o' && valeurSaisie != 'O' && valeurSaisie != 'n'))
       {
-         erreurCharRecommencer = true;
+         erreurSaisieCharactere = true;
          std::cin.clear();
       }
 
       std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-   }while(erreurCharRecommencer);
+   }while(erreurSaisieCharactere);
 
-   return continuee;
+   return valeurSaisie;
+}
+
+bool saisieIdentiqueA(const char& reponse)
+{
+   char userCharacter;
+
+   std::cout << reponse << " :";
+
+   std::cin >> userCharacter;
+
+   return (reponse==userCharacter);
 }
