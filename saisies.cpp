@@ -1,10 +1,10 @@
 /*
 -----------------------------------------------------------------------------------
-Nom du fichier  : saisieUtilisateur.h
+Nom du fichier  : saisies.cpp
 Auteur(s)       : Jérémie Santoro, Didier Lokokpe
 Date creation   : 10.11.2021
 
-Description     : Cette interface permet de simplifier les saisies utilisateur et met
+Description     : Définitions permettant de simplifier les saisies utilisateur et met
                   également à disposition des fonctions spécifiques qui peuvent être
                   utilisés dans de nombreux projets
 
@@ -19,15 +19,15 @@ Compilateur     : Mingw-w64 g++ 11.2.0
 #include <limits>
 
 // Boucle de saisie, pour obtenir une saisie utilisateur correcte
-int saisieDansIntervalle(const int& b_inf, const int& b_sup, const char* valeur){
-   int valeurSaisieIntervalle;
+unsigned int saisieDansIntervalle(const unsigned int& b_inf, const unsigned int& b_sup, const std::string& valeur){
+   unsigned int valeurSaisieIntervalle;
    bool erreurSaisieIntervalle;
 
    do
    {
       erreurSaisieIntervalle = false;
 
-      std::cout << "Combien de " << valeur << "[" << b_inf << " - " << b_sup << "] :";
+      std::cout << "Combien de " << valeur << " [" << b_inf << " - " << b_sup << "] :";
       std::cin >> valeurSaisieIntervalle;
 
       if(!std::cin.good() || valeurSaisieIntervalle < b_inf || valeurSaisieIntervalle > b_sup)
@@ -43,7 +43,7 @@ int saisieDansIntervalle(const int& b_inf, const int& b_sup, const char* valeur)
 }
 
 // Boucle de saisie utilisateur, pour savoir si il veut recommencer ou pas
-char saisieOuiOuNon(const char* question){
+char saisieOuiOuNon(const std::string& question){
    char valeurSaisie;
    bool erreurSaisieCharactere;
 
@@ -51,7 +51,7 @@ char saisieOuiOuNon(const char* question){
 
       erreurSaisieCharactere = false;
 
-      std::cout << question << " [o/n] :";
+      std::cout << question << " [o|n] :";
       std::cin >> valeurSaisie;
 
       if(!std::cin.good() || (valeurSaisie != 'o' && valeurSaisie != 'n'))
@@ -73,6 +73,13 @@ bool saisieIdentiqueA(const char& reponse)
    std::cout << reponse << " :";
 
    std::cin >> userCharacter;
+
+   if(!std::cin.good())
+   {
+      std::cin.clear();
+   }
+
+   std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
    return (reponse==userCharacter);
 }

@@ -30,8 +30,8 @@ Compilateur     : Mingw-w64 g++ 11.2.0
 -----------------------------------------------------------------------------------
 */
 #include "affichage.h"            // Permet de simplifier l'affichage
-#include "saisiesUtilisateur.h"   // Permet de gérer les saisies utilisateurs (avec controle)
-#include "genererAleatoirement.h" // Permet de générer des valeurs aléatoires
+#include "saisies.h"              // Permet de gérer les saisies utilisateurs (avec controle)
+#include "aleatoires.h"           // Permet de générer des valeurs aléatoires
 #include "chronometre.h"          // Permet de manipuler un chronomètre
 
 #include <cstdlib>                // Librairie qui permet d'utiliser EXIT_SUCCESS
@@ -41,48 +41,49 @@ using namespace std;
 
 int main() {
    // Choix des intervalles pour le nombre de lancées
-   const int B_INF =  1,
-             B_SUP = 10;
+   const unsigned int B_INF =  1,
+                      B_SUP = 10;
 
-   const int CHIFFRES_APRES_VIRGULE = 2;
+   const unsigned int CHIFFRES_APRES_VIRGULE = 2;
 
    // Explication du programme à l'utilisateur
    cout << "Bonjour ce programme permet de tester votre habilté au clavier :" << endl;
 
-   // Score de l'utilisateur
-   int nbreReponsesCorrectes;
+   // Nombres de réponses correctes
+   int scoreUtilisateur;
 
    // Boucle qui s'execute tant que l'utilisateur veut jouer
    do {
-      int nbreLancees = saisieDansIntervalle(B_INF, B_SUP, "lancees");
+      unsigned int nbreLancees = saisieDansIntervalle(B_INF, B_SUP, "lancees");
 
-      nbreReponsesCorrectes = 0;
+      scoreUtilisateur = 0;
 
       // Intervalles dans lesquelles les charactères seront tirés
       unsigned char BEGIN = 'a';
-      unsigned char END = 'z';
+      unsigned char END   = 'z';
 
       // Lancement du chronomètre
       demarrerChronometre();
 
       // Boucle le nombre de fois désirés par l'utilisateur
-      for (int i = 0; i < nbreLancees; ++i) {
+      for (unsigned int i = 0; i < nbreLancees; ++i) {
          // Si l'entrée fournie par l'utilisateur correspond au charactère
          // alétoire, alors incrémente le nombre de réponses correctes
-         nbreReponsesCorrectes += saisieIdentiqueA(genererCharactereAleatoireEntre(BEGIN, END));
+         scoreUtilisateur += saisieIdentiqueA(genererCharactereAleatoireEntre(BEGIN, END));
       }
 
       double tempsTotal = tempsApresDebutChronometre();
       double tempsMoyen = tempsTotal / (double) nbreLancees;
 
 
-      affichageDuResultat("Nombre de reponses correctes",nbreReponsesCorrectes);
-      affichageDuResultat("Temps ecoulé", tempsTotal, CHIFFRES_APRES_VIRGULE);
+      affichageDuResultat("Nombre de reponses correctes", scoreUtilisateur);
+      affichageDuResultat("Temps ecoule", tempsTotal, CHIFFRES_APRES_VIRGULE);
       affichageDuResultat("Temps moyen par lettre",tempsMoyen, CHIFFRES_APRES_VIRGULE);
 
       cout << endl;
 
-   }while(saisieOuiOuNon("Voulez-vous recommencer ?") == 'o'); // Si l'utilisateur répond oui, on recommence
+      // Si l'utilisateur répond oui, on recommence
+   }while(saisieOuiOuNon("Voulez-vous recommencer ?") == 'o');
 
    return EXIT_SUCCESS;
 }

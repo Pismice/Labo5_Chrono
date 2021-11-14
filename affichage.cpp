@@ -28,14 +28,14 @@ Compilateur     : Mingw-w64 g++ 11.2.0
 #include <iostream>
 #include <iomanip>
 
-void affichageDuResultat(const char* message, const double& resultat, const unsigned int& precision)
+void affichageDuResultat(const std::string& message, const double& resultat, const int& precision)
 {
    std::cout << std::left << std::setw(30) << message << " : "
    << std::fixed << std::setprecision(precision)
    << resultat << std::endl;
 }
 
-void affichageDuResultat(const char* message, const int& resultat)
+void affichageDuResultat(const std::string& message, const int& resultat)
 {
    std::cout << std::left << std::setw(30) << message << " : "
    << resultat << std::endl;

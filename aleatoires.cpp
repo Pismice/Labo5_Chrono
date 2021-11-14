@@ -1,6 +1,6 @@
 /*
 -----------------------------------------------------------------------------------
-Nom du fichier  : genererAleatoirement.cpp
+Nom du fichier  : aleatoires.cpp
 Auteur(s)       : Jérémie Santoro, Didier Lokokpe
 Date creation   : 10.11.2021
 
@@ -23,11 +23,6 @@ Compilateur     : Mingw-w64 g++ 11.2.0
 
 static bool premiereEntree = true;
 
-// Comme rand retourne toujours un int, ces 2 variables seronts communes à toutes
-// les éventuelles nouvelles fonctions
-static int borneInferieure;
-static int borneSuperieure;
-
 char genererCharactereAleatoireEntre(const unsigned char& begin, const unsigned char& end){
    // Si c'est la première fois il faut générer un nouveau seed
    if(premiereEntree)
@@ -35,6 +30,9 @@ char genererCharactereAleatoireEntre(const unsigned char& begin, const unsigned 
       srand((unsigned int)time(nullptr));
       premiereEntree = false;
    }
+
+   int borneSuperieure;
+   int borneInferieure;
 
    borneInferieure = int(begin);
    borneSuperieure = int(end);

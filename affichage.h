@@ -26,6 +26,8 @@ Compilateur     : Mingw-w64 g++ 11.2.0
 #ifndef LABO5_CHRONO_AFFICHAGE_H
 #define LABO5_CHRONO_AFFICHAGE_H
 
+#include <string>
+
 // Nom         : affichageDuResultat
 // But         : Permet d'affiche un résultat avec un message de manière simple
 //               et lisible
@@ -34,8 +36,7 @@ Compilateur     : Mingw-w64 g++ 11.2.0
 // Param3      : precision = Nombre de chiffres après la virgule désirés
 // Return      : n/a
 // Exception   : n/a
-void affichageDuResultat(const char* message, const double& resultat, const unsigned int& precision = 2);
-
+void affichageDuResultat(const std::string& message, const double& resultat, const int& precision = 2);
 // Nom         : affichageDuResultat
 // But         : Permet d'affiche un résultat avec un message de manière simple
 //               et lisible
@@ -43,6 +44,6 @@ void affichageDuResultat(const char* message, const double& resultat, const unsi
 // Param2      : resultat  = Entier de la valeur à afficher
 // Return      : n/a
 // Exception   : n/a
-void affichageDuResultat(const char* message, const int& resultat);
+void affichageDuResultat(const std::string& message, const int& resultat);
 
 #endif //LABO5_CHRONO_AFFICHAGE_H
