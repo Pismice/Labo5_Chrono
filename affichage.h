@@ -23,10 +23,6 @@ Compilateur     : Mingw-w64 g++ 11.2.0
 -----------------------------------------------------------------------------------
 */
 
-/*
-#ifndef LABO5_CHRONO_AFFICHAGE_H
-#define LABO5_CHRONO_AFFICHAGE_H*/
-
 #ifndef AFFICHAGE_H
 #define AFFICHAGE_H
 
