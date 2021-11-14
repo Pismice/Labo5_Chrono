@@ -30,8 +30,8 @@ Compilateur     : Mingw-w64 g++ 11.2.0
 -----------------------------------------------------------------------------------
 */
 #include "affichage.h"            // Permet de simplifier l'affichage
-#include "saisies.h"              // Permet de gérer les saisies utilisateurs (avec controle)
-#include "aleatoires.h"           // Permet de générer des valeurs aléatoires
+#include "saisie.h"              // Permet de gérer les saisies utilisateurs (avec controle)
+#include "aleatoire.h"           // Permet de générer des valeurs aléatoires
 #include "chronometre.h"          // Permet de manipuler un chronomètre
 
 #include <cstdlib>                // Librairie qui permet d'utiliser EXIT_SUCCESS

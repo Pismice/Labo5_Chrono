@@ -1,6 +1,6 @@
 /*
 -----------------------------------------------------------------------------------
-Nom du fichier  : aleatoires.h
+Nom du fichier  : aleatoire.h
 Auteur(s)       : Jérémie Santoro, Didier Lokokpe
 Date creation   : 10.11.2021
 
@@ -17,8 +17,8 @@ Compilateur     : Mingw-w64 g++ 11.2.0
 -----------------------------------------------------------------------------------
 */
 
-#ifndef LABO5_CHRONO_ALEATOIRES_H
-#define LABO5_CHRONO_ALEATOIRES_H
+#ifndef LABO5_CHRONO_ALEATOIRE_H
+#define LABO5_CHRONO_ALEATOIRE_H
 
 // Nom         : genererCharactereAleatoireEntre
 // But         : Permet de générer un char aléatoire entre 2 bornes
@@ -29,4 +29,4 @@ Compilateur     : Mingw-w64 g++ 11.2.0
 // Exception   : n/a
 char genererCharactereAleatoireEntre(const unsigned char& begin,const unsigned char& end);
 
-#endif //LABO5_CHRONO_ALEATOIRES_H
+#endif //LABO5_CHRONO_ALEATOIRE_H

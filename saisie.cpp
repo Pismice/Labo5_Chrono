@@ -1,6 +1,6 @@
 /*
 -----------------------------------------------------------------------------------
-Nom du fichier  : saisies.cpp
+Nom du fichier  : saisie.cpp
 Auteur(s)       : Jérémie Santoro, Didier Lokokpe
 Date creation   : 10.11.2021
 

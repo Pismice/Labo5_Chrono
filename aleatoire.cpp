@@ -1,6 +1,6 @@
 /*
 -----------------------------------------------------------------------------------
-Nom du fichier  : aleatoires.cpp
+Nom du fichier  : aleatoire.cpp
 Auteur(s)       : Jérémie Santoro, Didier Lokokpe
 Date creation   : 10.11.2021
 
