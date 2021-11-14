@@ -1,11 +1,25 @@
-//
-// Created by admin on 12.11.2021.
-//
+/*
+-----------------------------------------------------------------------------------
+Nom du fichier  : saisieUtilisateur.h
+Auteur(s)       : Jérémie Santoro, Didier Lokokpe
+Date creation   : 10.11.2021
+
+Description     : Cette interface permet de simplifier les saisies utilisateur et met
+                  également à disposition des fonctions spécifiques qui peuvent être
+                  utilisés dans de nombreux projets
+
+Modification(s) : -
+
+Remarque(s)     : -
+
+Compilateur     : Mingw-w64 g++ 11.2.0
+-----------------------------------------------------------------------------------
+*/
 #include <iostream>
 #include <limits>
 
 // Boucle de saisie, pour obtenir une saisie utilisateur correcte
-int saisieDansIntervalle(const int& B_inf, const int& B_sup, const char *valeur){
+int saisieDansIntervalle(const int& b_inf, const int& b_sup, const char* valeur){
    int valeurSaisieIntervalle;
    bool erreurSaisieIntervalle;
 
@@ -13,10 +27,10 @@ int saisieDansIntervalle(const int& B_inf, const int& B_sup, const char *valeur)
    {
       erreurSaisieIntervalle = false;
 
-      std::cout << "Combien de " << valeur << "[" << B_inf << " - " << B_sup << "] :";
+      std::cout << "Combien de " << valeur << "[" << b_inf << " - " << b_sup << "] :";
       std::cin >> valeurSaisieIntervalle;
 
-      if(!std::cin.good() || valeurSaisieIntervalle < B_inf || valeurSaisieIntervalle > B_sup)
+      if(!std::cin.good() || valeurSaisieIntervalle < b_inf || valeurSaisieIntervalle > b_sup)
       {
          erreurSaisieIntervalle = true;
          std::cin.clear();
@@ -29,7 +43,7 @@ int saisieDansIntervalle(const int& B_inf, const int& B_sup, const char *valeur)
 }
 
 // Boucle de saisie utilisateur, pour savoir si il veut recommencer ou pas
-char saisieCharactereDecisionRecommencer(){
+char saisieOuiOuNon(const char* question){
    char valeurSaisie;
    bool erreurSaisieCharactere;
 
@@ -37,10 +51,10 @@ char saisieCharactereDecisionRecommencer(){
 
       erreurSaisieCharactere = false;
 
-      std::cout << "Voulez-vous recommencer ? [o/n] :";
+      std::cout << question << " [o/n] :";
       std::cin >> valeurSaisie;
 
-      if(!std::cin.good() || (valeurSaisie != 'o' && valeurSaisie != 'O' && valeurSaisie != 'n'))
+      if(!std::cin.good() || (valeurSaisie != 'o' && valeurSaisie != 'n'))
       {
          erreurSaisieCharactere = true;
          std::cin.clear();

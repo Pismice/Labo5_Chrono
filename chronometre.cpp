@@ -1,6 +1,21 @@
-//
-// Created by pismice on 12.11.2021.
-//
+/*
+-----------------------------------------------------------------------------------
+Nom du fichier  : chronometre.cpp
+Auteur(s)       : Jérémie Santoro, Didier Lokokpe
+Date creation   : 10.11.2021
+
+Description     : Définitions de plusieurs fonctions permettant de simuler
+                  l'utilisation d'un chronomètre
+
+Modification(s) : -
+
+Remarque(s)     : - Ces fonctions ne marchent pas à proprment parlé comme un chronomètre
+                    elles vont tout simplement comparer différents instants t dans le
+                    temps et les manipuler pour obtenir les résultats voulus
+
+Compilateur     : Mingw-w64 g++ 11.2.0
+-----------------------------------------------------------------------------------
+*/
 
 #include <ctime>
 #include "chronometre.h"

@@ -77,12 +77,12 @@ int main() {
 
 
       affichageDuResultat("Nombre de reponses correctes",nbreReponsesCorrectes);
-      affichageDuResultat("Temps ecouler", tempsTotal, CHIFFRES_APRES_VIRGULE);
+      affichageDuResultat("Temps ecoulé", tempsTotal, CHIFFRES_APRES_VIRGULE);
       affichageDuResultat("Temps moyen par lettre",tempsMoyen, CHIFFRES_APRES_VIRGULE);
 
       cout << endl;
 
-   }while(saisieCharactereDecisionRecommencer() == 'o');
+   }while(saisieOuiOuNon("Voulez-vous recommencer ?") == 'o'); // Si l'utilisateur répond oui, on recommence
 
    return EXIT_SUCCESS;
 }
