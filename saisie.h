@@ -16,8 +16,8 @@ Compilateur     : Mingw-w64 g++ 11.2.0
 -----------------------------------------------------------------------------------
 */
 
-#ifndef LABO5_CHORNO_SAISIEUTILISATEUR_H
-#define LABO5_CHORNO_SAISIEUTILISATEUR_H
+#ifndef SAISIE_H
+#define SAISIE_H
 
 // Nom         : saisieDansIntervalle
 // But         : Permet d'effectuer et contrôler une saisie sur un entier dans une
@@ -47,4 +47,4 @@ char saisieOuiOuNon(const std::string& question);
 // Remarques   : Seul le premier charactère de la saisie est pris en compte
 bool saisieIdentiqueA(const char& reponse);
 
-#endif //LABO5_CHORNO_SAISIEUTILISATEUR_H
+#endif //SAISIE_H

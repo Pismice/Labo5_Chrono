@@ -17,8 +17,8 @@ Compilateur     : Mingw-w64 g++ 11.2.0
 -----------------------------------------------------------------------------------
 */
 
-#ifndef LABO5_CHRONO_ALEATOIRE_H
-#define LABO5_CHRONO_ALEATOIRE_H
+#ifndef ALEATOIRE_H
+#define ALEATOIRE_H
 
 // Nom         : genererCharactereAleatoireEntre
 // But         : Permet de générer un char aléatoire entre 2 bornes
@@ -29,4 +29,4 @@ Compilateur     : Mingw-w64 g++ 11.2.0
 // Exception   : n/a
 char genererCharactereAleatoireEntre(const unsigned char& begin,const unsigned char& end);
 
-#endif //LABO5_CHRONO_ALEATOIRE_H
+#endif //ALEATOIRE_H

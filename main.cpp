@@ -29,10 +29,10 @@ Remarque(s)     : - Les saisies utilisteur sont contrôlées
 Compilateur     : Mingw-w64 g++ 11.2.0
 -----------------------------------------------------------------------------------
 */
-#include "affichage.h"            // Permet de simplifier l'affichage
+#include "affichage.h"           // Permet de simplifier l'affichage
 #include "saisie.h"              // Permet de gérer les saisies utilisateurs (avec controle)
 #include "aleatoire.h"           // Permet de générer des valeurs aléatoires
-#include "chronometre.h"          // Permet de manipuler un chronomètre
+#include "chronometre.h"         // Permet de manipuler un chronomètre
 
 #include <cstdlib>                // Librairie qui permet d'utiliser EXIT_SUCCESS
 #include <iostream>               // Librairie qui permet d'utiliser les cin et cout

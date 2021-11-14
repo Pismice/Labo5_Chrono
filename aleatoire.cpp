@@ -27,6 +27,8 @@ char genererCharactereAleatoireEntre(const unsigned char& begin, const unsigned 
    // Si c'est la première fois il faut générer un nouveau seed
    if(premiereEntree)
    {
+      // Raison pour laquelle on n'utilise pas NULL
+      // https://stackoverflow.com/questions/1282295/what-exactly-is-nullptr
       srand((unsigned int)time(nullptr));
       premiereEntree = false;
    }
@@ -37,9 +39,9 @@ char genererCharactereAleatoireEntre(const unsigned char& begin, const unsigned 
    borneInferieure = int(begin);
    borneSuperieure = int(end);
 
-   int difference = borneSuperieure - borneInferieure;
+   int difference = borneSuperieure - borneInferieure + 1;
 
-   int valeurAleatoire = rand() % difference + 1;
+   int valeurAleatoire = rand() % difference;
 
    return char(borneInferieure + valeurAleatoire);
 }

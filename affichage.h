@@ -23,8 +23,12 @@ Compilateur     : Mingw-w64 g++ 11.2.0
 -----------------------------------------------------------------------------------
 */
 
+/*
 #ifndef LABO5_CHRONO_AFFICHAGE_H
-#define LABO5_CHRONO_AFFICHAGE_H
+#define LABO5_CHRONO_AFFICHAGE_H*/
+
+#ifndef AFFICHAGE_H
+#define AFFICHAGE_H
 
 #include <string>
 
@@ -37,6 +41,7 @@ Compilateur     : Mingw-w64 g++ 11.2.0
 // Return      : n/a
 // Exception   : n/a
 void affichageDuResultat(const std::string& message, const double& resultat, const int& precision = 2);
+
 // Nom         : affichageDuResultat
 // But         : Permet d'affiche un résultat avec un message de manière simple
 //               et lisible
@@ -46,4 +51,4 @@ void affichageDuResultat(const std::string& message, const double& resultat, con
 // Exception   : n/a
 void affichageDuResultat(const std::string& message, const int& resultat);
 
-#endif //LABO5_CHRONO_AFFICHAGE_H
+#endif //AFFICHAGE_H

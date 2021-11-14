@@ -10,7 +10,12 @@ Description     : Définitions permettant de simplifier les saisies utilisateur 
 
 Modification(s) : -
 
-Remarque(s)     : -
+Remarque(s)     : - https://stackoverflow.com/questions/1452721/why-is-using-namespace-std-considered-bad-practice/1452738
+                  Si comme demandé, le code des librairies doit être le plus réutilisable
+                  et modulable que possible il est recommandé de ne pas utiliser using
+                  namespace std, pour les raisons citées dans le lien ci-dessus
+                  - Les saisies sont contrôlées
+
 
 Compilateur     : Mingw-w64 g++ 11.2.0
 -----------------------------------------------------------------------------------

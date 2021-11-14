@@ -15,8 +15,8 @@ Remarque(s)     : - Ces fonctions ne marchent pas à proprment parlé comme un c
 Compilateur     : Mingw-w64 g++ 11.2.0
 -----------------------------------------------------------------------------------
 */
-#ifndef LABO5_CHRONO_CHRONOMETRE_H
-#define LABO5_CHRONO_CHRONOMETRE_H
+#ifndef CHRONOMETRE_H
+#define CHRONOMETRE_H
 
 // Nom         : demarrerChronometre
 // But         : Récupère l'instant t auquel la fonction est appelée et la stock dans
@@ -33,4 +33,4 @@ void   demarrerChronometre();
 // Exception   : Si le chronomètre n'a pas été démarré retourne logiquement 0.0
 double tempsApresDebutChronometre();
 
-#endif //LABO5_CHRONO_CHRONOMETRE_H
+#endif //CHRONOMETRE_H
